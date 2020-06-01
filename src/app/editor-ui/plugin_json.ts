@@ -1,4 +1,4 @@
-{
+export var pluginJson = {
   "name": "custom.remote.python.azure_vault_consul",
   "version": "1.014",
   "type": "python",
@@ -25,7 +25,6 @@
     "properties": [
       {"key": "tenant_id", "displayName": "Azure Tenant ID", "displayOrder": 1 },
       {"key": "resource_group", "displayName": "Azure Resource group", "displayOrder": 2 },
-      {"key": "subscription", "displayName": "Azure Subscription", "displayOrder": 3 },
       {"key": "client_id", "displayName": "Azure Client ID", "displayOrder": 4 },
       {"key": "client_secret", "displayName": "Azure Client secret", "displayOrder": 5 },
       {"key": "group", "displayName": "Dynatrace group name", "displayHint": "The clusters will be grouped by under this name", "displayOrder": 6 },

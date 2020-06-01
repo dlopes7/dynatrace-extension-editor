@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as PluginJson from "./plugin.json";
+import {pluginJson} from "./plugin_json";
 
 
 @Component({
@@ -9,14 +9,36 @@ import * as PluginJson from "./plugin.json";
 })
 export class EditorUiComponent implements OnInit {
 
-  pluginJson = JSON.parse(JSON.stringify(PluginJson));
+  pluginJson: any = pluginJson;
 
   constructor() { 
-    console.log(PluginJson.name);
+    
   }
 
   ngOnInit(): void {
+    this.parseProperties();
   }
 
+  parseProperties(): void {
+
+    if (!this.pluginJson.configUI) {
+      this.pluginJson.configUI = {
+        "displayName": this.pluginJson.name,
+        "properties": []
+      };
+    }
+
+    this.pluginJson.properties.forEach(property => {
+      
+      
+      property.configUIProperty = this.pluginJson.configUI.properties.find((prop) => {
+        if (prop.key == property.key) {
+          return prop;
+        }
+      });
+      console.log(property);
+
+    });
+  }
 
 }
