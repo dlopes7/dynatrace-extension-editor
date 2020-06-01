@@ -1,0 +1,39 @@
+<div class="dt-demo-card">
+  <dt-card>
+    <dt-card-title>Metadata for {{pluginJson.name}}</dt-card-title>
+    <dt-card-subtitle>Name, version, technologies, etc</dt-card-subtitle>
+    <dt-card-title-actions>
+      <button dt-button variant="secondary">Some Action</button>
+    </dt-card-title-actions>
+
+
+    <div>
+      <div class="prop-editor">
+        <dt-label class="left">Name</dt-label>
+        <em class="right" [(ngModel)]="pluginJson.name" dt-inline-editor></em>
+      </div>
+
+      <div class="prop-editor">
+        <dt-label class="left">Version</dt-label>
+        <em class="right" [(ngModel)]="pluginJson.version" dt-inline-editor></em>
+      </div>
+
+        <div class="prop-editor">
+          <dt-label class="left">Type</dt-label>
+          <em class="right" [(ngModel)]="pluginJson.type" dt-inline-editor></em>
+        </div>
+
+        <div class="prop-editor">
+          <dt-label class="left">Technologies</dt-label>
+          <em class="right" [(ngModel)]="pluginJson.technologies" dt-inline-editor></em>
+        </div>
+
+        <div class="prop-editor">
+          <dt-label class="left">Metric group </dt-label>
+          <em class="right" [(ngModel)]="pluginJson.metricGroup" dt-inline-editor></em>
+        </div>
+
+      </div>
+
+  </dt-card>
+</div>

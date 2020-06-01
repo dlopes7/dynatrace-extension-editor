@@ -1,0 +1,9 @@
+.dt-menu{
+    height: 100%;
+    width: 240px;
+}
+
+/*If I don't do this, the element goes beyond the parent width*/
+.dt-menu-item{
+    width: unset !important;
+}
