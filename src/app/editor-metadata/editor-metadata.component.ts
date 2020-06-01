@@ -7,8 +7,7 @@ import { PluginJsonService } from '../shared/services/plugin-json.service';
   styleUrls: ['./editor-metadata.component.scss']
 })
 export class EditorMetadataComponent implements OnInit {
-
-  @Input()
+  
   pluginJson: any;
 
   constructor(private pluginJsonService: PluginJsonService) {

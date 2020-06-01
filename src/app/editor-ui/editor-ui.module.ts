@@ -2,22 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { EditorUiComponent } from './editor-ui.component';
+import {EditorMenuModule} from '../editor-menu/editor-menu.module';
+import {EditorTopBarModule} from '../editor-top-bar/editor-top-bar.module';
+import {EditorNavigationModule} from '../editor-navigation/editor-navigation.module';
+import {EditorMetadataModule} from '../editor-metadata/editor-metadata.module';
+
+import { EditorMetadataComponent } from '../editor-metadata/editor-metadata.component';
 
 // Dynatrace barista
-import { DtIconModule } from '@dynatrace/barista-components/icon';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DtTopBarNavigationModule} from '@dynatrace/barista-components/top-bar-navigation';
-import {DtSecondaryNavModule} from '@dynatrace/barista-components/secondary-nav';
+import {DtIconModule} from '@dynatrace/barista-components/icon';
 import {DtDrawerModule} from '@dynatrace/barista-components/drawer';
-import {DtKeyValueListModule} from '@dynatrace/barista-components/key-value-list';
-import {DtCardModule} from '@dynatrace/barista-components/card';
-import {DtMenuModule} from '@dynatrace/barista-components/menu';
 import {DtBreadcrumbsModule} from '@dynatrace/barista-components/breadcrumbs';
 
 const appRoutes: Routes = [
     {path: 'home', component: EditorUiComponent},
-    {path: 'editor', component: EditorUiComponent}
+    {path: 'editor', component: EditorUiComponent,
+        children: [
+            {path: 'metadata', component: EditorMetadataComponent},
+            {path: 'source', component: EditorMetadataComponent}
+        ]}
   ];
 
 @NgModule({
@@ -26,16 +32,16 @@ const appRoutes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forRoot(appRoutes),
+        RouterModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        DtIconModule.forRoot({ svgIconLocation: '/assets/icons/{{name}}.svg' }),
-        DtTopBarNavigationModule,
-        DtSecondaryNavModule,
+        DtIconModule.forRoot({ svgIconLocation: 'https://unpkg.com/@dynatrace/barista-icons/{{name}}.svg' }),
         DtDrawerModule,
-        DtKeyValueListModule,
-        DtCardModule,
-        DtMenuModule,
-        DtBreadcrumbsModule
+        DtBreadcrumbsModule,
+        EditorMenuModule,
+        EditorTopBarModule,
+        EditorNavigationModule,
+        EditorMetadataModule,
     ],
     exports: [EditorUiComponent]
 })
