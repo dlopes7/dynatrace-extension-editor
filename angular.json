@@ -43,9 +43,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/@dynatrace/barista-fonts/typography.scss",
-              "node_modules/@dynatrace/barista-components/style/index.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
