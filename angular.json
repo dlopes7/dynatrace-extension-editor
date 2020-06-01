@@ -25,10 +25,27 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@dynatrace/barista-fonts/fonts/",
+                "output": "/fonts"
+              },
+              {
+                "glob": "metadata.json",
+                "input": "node_modules/@dynatrace/barista-icons",
+                "output": "/assets/icons"
+              },
+              {
+                "glob": "*.svg",
+                "input": "node_modules/@dynatrace/barista-icons",
+                "output": "/assets/icons"
+              }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@dynatrace/barista-fonts/typography.scss",
+              "node_modules/@dynatrace/barista-components/style/index.scss"
             ],
             "scripts": []
           },
