@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { EditorUiComponent } from './editor-ui/editor-ui.component';
 import { EditorUiModule } from './editor-ui/editor-ui.module';
 import { EditorMetadataComponent } from './editor-metadata/editor-metadata.component';
+import { EditorSourceComponent } from './editor-source/editor-source.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
   {path: 'editor', component: EditorUiComponent,
       children: [
           {path: 'metadata', component: EditorMetadataComponent},
-          {path: 'source', component: EditorMetadataComponent}
+          {path: 'source', component: EditorSourceComponent}
       ]}
 ];
 

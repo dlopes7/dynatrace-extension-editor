@@ -7,6 +7,7 @@ import { EditorMenuModule } from '../editor-menu/editor-menu.module';
 import { EditorTopBarModule } from '../editor-top-bar/editor-top-bar.module';
 import { EditorNavigationModule } from '../editor-navigation/editor-navigation.module';
 import { EditorMetadataModule } from '../editor-metadata/editor-metadata.module';
+import { EditorSourceModule } from '../editor-source/editor-source.module';
 
 // Dynatrace barista
 import { DtDrawerModule } from '@dynatrace/barista-components/drawer';
@@ -27,6 +28,7 @@ import { DtBreadcrumbsModule } from '@dynatrace/barista-components/breadcrumbs';
         EditorTopBarModule,
         EditorNavigationModule,
         EditorMetadataModule,
+        EditorSourceModule,
     ],
     exports: [EditorUiComponent]
 })

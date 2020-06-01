@@ -12,12 +12,12 @@ export class HomeComponent implements OnInit {
   uploadErrorMessage: string;
 
   constructor(private pluginJsonService: PluginJsonService) { 
-    this.pluginJson = pluginJsonService.pluginJson;
     this.uploadError = false;
     this.uploadErrorMessage = "";
   }
 
   ngOnInit(): void {
+    this.pluginJsonService.pluginJsonSource.subscribe(pluginJson => this.pluginJson = pluginJson);
   }
 
   uploadFile(event) {
@@ -28,11 +28,11 @@ export class HomeComponent implements OnInit {
     fileReader.onload = () => {
       try{
         let parsedJson = JSON.parse(fileReader.result.toString());
-        this.pluginJson = parsedJson;
+        this.pluginJsonService.changePluginJson(parsedJson);
         this.uploadErrorMessage = "";
         this.uploadError = false;
       } catch (e) {
-        this.uploadErrorMessage = `Could not upload the file!:  ${e}`;
+        this.uploadErrorMessage = `Could parse the file!:  ${e}`;
         this.uploadError = true;
       }
      

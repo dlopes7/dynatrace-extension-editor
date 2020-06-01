@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit} from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import {pluginJson} from "./plugin_json";
 
@@ -8,11 +9,15 @@ import {pluginJson} from "./plugin_json";
 
 export class PluginJsonService {
 
-  pluginJson: any;
+  pluginJsonSource = new BehaviorSubject<any>({});
+  pluginJson = this.pluginJsonSource.asObservable();
 
   constructor() {
-    this.pluginJson = pluginJson;
+    this.changePluginJson(pluginJson);
    }
 
+  changePluginJson(pluginJson: any) {
+    this.pluginJsonSource.next(pluginJson);
+  }
 
 }

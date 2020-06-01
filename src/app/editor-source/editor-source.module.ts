@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { EditorMetadataComponent } from './editor-metadata.component';
+import { EditorSourceComponent } from './editor-source.component';
 import { PluginJsonService } from '../shared/services/plugin-json.service';
 
 import {DtCardModule} from '@dynatrace/barista-components/card';
@@ -13,8 +13,8 @@ import {DtInlineEditorModule } from '@dynatrace/barista-components/inline-editor
 
 
 @NgModule({
+  declarations: [EditorSourceComponent],
   providers: [PluginJsonService],
-  declarations: [EditorMetadataComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,8 +24,6 @@ import {DtInlineEditorModule } from '@dynatrace/barista-components/inline-editor
     DtInputModule,
     DtInlineEditorModule
   ],
-  exports: [
-    EditorMetadataComponent
-  ]
+  exports: [EditorSourceComponent]
 })
-export class EditorMetadataModule { }
+export class EditorSourceModule { }
