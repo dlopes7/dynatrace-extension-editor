@@ -1,6 +1,6 @@
 <dt-drawer-container class="editor-ui-main">
-  <dt-drawer #drawer_menu opened>
-    <app-editor-menu></app-editor-menu>
+  <dt-drawer #drawer_menu opened class="main-menu">
+    <app-editor-menu [drawer]=drawer_menu></app-editor-menu>
   </dt-drawer>
  
   <app-editor-top-bar [drawer]=drawer_menu></app-editor-top-bar>

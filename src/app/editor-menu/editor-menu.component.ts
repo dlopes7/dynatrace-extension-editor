@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-editor-menu',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./editor-menu.component.scss']
 })
 export class EditorMenuComponent implements OnInit {
+
+  @Input()
+  drawer: any;
 
   constructor() { }
 

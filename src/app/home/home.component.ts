@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PluginJsonService } from '../shared/services/plugin-json.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
+import { DtToast } from '@dynatrace/barista-components/toast';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +13,23 @@ import { PluginJsonService } from '../shared/services/plugin-json.service';
 export class HomeComponent implements OnInit {
   pluginJson: any;
   uploadError: boolean;
+  uploadSuccess: boolean;
   uploadErrorMessage: string;
 
-  constructor(private pluginJsonService: PluginJsonService) { 
+
+  loadFromURLForm = new FormGroup({
+    url: new FormControl(''),
+  });
+
+  constructor(private http: HttpClient, private pluginJsonService: PluginJsonService, private toast: DtToast) { 
     this.uploadError = false;
     this.uploadErrorMessage = "";
+    
   }
 
   ngOnInit(): void {
     this.pluginJsonService.pluginJsonSource.subscribe(pluginJson => this.pluginJson = pluginJson);
+    
   }
 
   uploadFile(event) {
@@ -31,6 +43,8 @@ export class HomeComponent implements OnInit {
         this.pluginJsonService.changePluginJson(parsedJson);
         this.uploadErrorMessage = "";
         this.uploadError = false;
+        this.uploadSuccess = true;
+        this.toast.create('Plugin uploaded successfully!');
       } catch (e) {
         this.uploadErrorMessage = `Could parse the file!:  ${e}`;
         this.uploadError = true;
@@ -43,6 +57,12 @@ export class HomeComponent implements OnInit {
       this.uploadError = true;
       console.log(error);
     }
+  }
+
+  loadFromURL() {
+   this.http.get(this.loadFromURLForm.value.url).subscribe(results => console.log(results));
+
+
   }
 
 }

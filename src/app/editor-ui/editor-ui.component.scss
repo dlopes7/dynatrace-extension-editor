@@ -9,11 +9,13 @@
 .dt-drawer{
     padding: 0;
     padding-right: 0;
-  }
+    border-right: 0px;
+}
   
 .dt-menu{
     height: 100%;
     width: 240px;
+
 }
 
 /*If I don't do this, the element goes beyond the parent width*/

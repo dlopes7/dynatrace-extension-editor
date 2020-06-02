@@ -1,6 +1,6 @@
 <dt-drawer-container class="editor-ui-main">
   <dt-drawer #drawer_menu opened>
-    <app-editor-menu></app-editor-menu>
+    <app-editor-menu  [drawer]=drawer_menu></app-editor-menu>
   </dt-drawer>
 
   <app-editor-top-bar [drawer]=drawer_menu></app-editor-top-bar>
@@ -12,31 +12,60 @@
   <div class="upload-card">
     <dt-card>
       <dt-card-icon>
-        <dt-icon name="plugin"></dt-icon>
+        <dt-icon name="cloud-upload"></dt-icon>
       </dt-card-icon>
       <dt-card-title>Upload a plugin.json file</dt-card-title>
       <dt-card-subtitle></dt-card-subtitle>
       <div class="upload-label">
-        This app allows you to customize your plugin. You can add metrics, properties, charts, icons.<br>It will also scan your plugin.json for missing properties and charts.
+        This app allows you to customize your plugin. You can add metrics, properties, charts, icons.<br>It will also
+        scan your plugin.json for missing properties and charts.
       </div>
     </dt-card>
+
+    
     <div class="upload-button">
-
       <dt-alert *ngIf="uploadError" severity="error" #alert1>{{uploadErrorMessage}}</dt-alert>
-
       <button dt-button variant="secondary" (click)="uploader.click()">
         <dt-icon name="cloud-upload"></dt-icon>
         Upload plugin.json
       </button>
-    </div>
+
+      </div>
+      <div *ngIf="uploadSuccess" class="uploaded-checkmark">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" space="preserve" fill="#6bcb8b"><polygon points="453.44849,132.55295 404.42163,91.41453 203.87195,330.42038 99.68994,243.00125 	58.55151,292.02811 211.76038,420.58566 "></polygon></svg>
+      </div>
+
   </div>
+
+  <!-- <div class="upload-card">
+    <dt-card>
+      <dt-card-icon>
+        <dt-icon name="https"></dt-icon>
+      </dt-card-icon>
+      <dt-card-title>Load a plugin.json file from a URL</dt-card-title>
+      <dt-card-subtitle></dt-card-subtitle>
+      <div class="upload-label">
+      </div>
+    </dt-card>
+
+
+     <div class="upload-button upload-from-url">
+      <form [formGroup]="loadFromURLForm" (ngSubmit)="loadFromURL()">
+      <dt-form-field>
+        <input type="text" dtInput placeholder="https://github.com/BraydenNeale/DT-SNMP/blob/master/plugin.json" formControlName="url" />
+        <button dt-icon-button dtSuffix variant="nested" aria-label="Submit changes">
+          <dt-icon name="checkmark"></dt-icon>
+        </button>
+        <dt-error>A wild error appears</dt-error>
+      </dt-form-field>
+      </form>
+      
+    </div> 
+
+  </div> -->
+
 
 
 </dt-drawer-container>
 
-<input 
-    hidden 
-    type="file" 
-    #uploader
-    (change)="uploadFile($event)"
-/>
+<input hidden type="file" #uploader (change)="uploadFile($event)" />
