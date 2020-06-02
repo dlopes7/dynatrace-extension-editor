@@ -1,16 +1,16 @@
 <dt-drawer-container class="editor-ui-main">
-  <dt-drawer #drawer opened>
+  <dt-drawer #drawer_menu opened>
     <app-editor-menu></app-editor-menu>
   </dt-drawer>
  
-  <app-editor-top-bar></app-editor-top-bar>
+  <app-editor-top-bar [drawer]=drawer_menu></app-editor-top-bar>
 
   <dt-breadcrumbs aria-label="Breadcrumbs navigation">
     <a dtBreadcrumbsItem href="editor">Editor</a>
   </dt-breadcrumbs>
 
   <dt-drawer-container class="editor-ui-main">
-    <dt-drawer #drawer opened>
+    <dt-drawer #drawer_nav opened>
       <app-editor-navigation></app-editor-navigation>
     </dt-drawer>
 
