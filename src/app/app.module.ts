@@ -22,7 +22,9 @@ const routes: Routes = [
   {path: 'editor', component: EditorUiComponent,
       children: [
           {path: 'metadata', component: EditorMetadataComponent},
-          {path: 'source', component: EditorSourceComponent}
+          {path: 'source', component: EditorSourceComponent},
+          {path: 'properties', component: EditorSourceComponent},
+          {path: 'metrics', component: EditorSourceComponent}
       ]}
 ];
 
