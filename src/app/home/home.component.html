@@ -1,9 +1,9 @@
 <dt-drawer-container class="editor-ui-main">
-  <dt-drawer #drawer opened>
+  <dt-drawer #drawer_menu opened>
     <app-editor-menu></app-editor-menu>
   </dt-drawer>
 
-  <app-editor-top-bar></app-editor-top-bar>
+  <app-editor-top-bar [drawer]=drawer_menu></app-editor-top-bar>
 
   <dt-breadcrumbs aria-label="Breadcrumbs navigation">
     <a dtBreadcrumbsItem href="home">Home</a>
@@ -17,7 +17,7 @@
       <dt-card-title>Upload a plugin.json file</dt-card-title>
       <dt-card-subtitle></dt-card-subtitle>
       <div class="upload-label">
-        This tool allows you to customize your plugin. You can add metrics, properties, charts, icons.<br>It will also scan your plugin.json for missing properties and charts.
+        This app allows you to customize your plugin. You can add metrics, properties, charts, icons.<br>It will also scan your plugin.json for missing properties and charts.
       </div>
     </dt-card>
     <div class="upload-button">
