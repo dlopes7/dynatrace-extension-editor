@@ -203,8 +203,6 @@ export var pluginJson = {
       {"key": "usage_system", "displayName": "CPU System", "mergeaggregation": "AVG", "aggregation": "avg" },
       {"key": "mem_used", "displayName": "Memory", "mergeaggregation": "AVG", "aggregation": "avg" } ],
     "keycharts": [
-      {"group": "System", "title": "CPU System", "series": [
-          {"key": "usage_system", "mergeaggregation": "AVG" } ] },
       {"group": "System", "title": "Memory", "series": [
           {"key": "mem_used", "mergeaggregation": "AVG" } ] },
       {"group": "System", "title": "Swap", "series": [
@@ -248,8 +246,6 @@ export var pluginJson = {
       {"group": "Consul", "title": "Autopilot Healthy", "description": "Tracks the overall health of the local server cluster. If all servers are considered healthy by Autopilot, this will be set to 1. If any are unhealthy, this will be 0", "series": [
           {"key": "autopilot_healthy", "mergeaggregation": "SUM" } ] } ],
     "charts": [
-      {"group": "System", "title": "CPU System", "series": [
-          {"key": "usage_system", "displayName": "CPU System" } ] },
       {"group": "System", "title": "Memory", "series": [
           {"key": "mem_used", "displayName": "Memory" } ] },
       {"group": "System", "title": "Swap", "series": [

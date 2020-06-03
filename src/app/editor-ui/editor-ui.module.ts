@@ -8,6 +8,8 @@ import { EditorTopBarModule } from '../editor-top-bar/editor-top-bar.module';
 import { EditorNavigationModule } from '../editor-navigation/editor-navigation.module';
 import { EditorMetadataModule } from '../editor-metadata/editor-metadata.module';
 import { EditorSourceModule } from '../editor-source/editor-source.module';
+import { EditorMetricsModule } from '../editor-metrics/editor-metrics.module';
+
 
 // Dynatrace barista
 import { DtDrawerModule } from '@dynatrace/barista-components/drawer';
@@ -29,6 +31,7 @@ import { DtBreadcrumbsModule } from '@dynatrace/barista-components/breadcrumbs';
         EditorNavigationModule,
         EditorMetadataModule,
         EditorSourceModule,
+        EditorMetricsModule
     ],
     exports: [EditorUiComponent]
 })

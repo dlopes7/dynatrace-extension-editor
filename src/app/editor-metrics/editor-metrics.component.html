@@ -1,0 +1,54 @@
+
+
+<div class="metric-card" [class.key-metric]="metric.keyMetric"  *ngFor="let metric of pluginJson.metrics">
+
+    <dt-card>
+        <!-- Indicator for charts -->
+        <dt-card-icon *ngIf="metric.inCharts > 0" >
+            <dt-icon class="metric-ok" name="checkmark"></dt-icon>
+          </dt-card-icon>
+        <dt-card-icon *ngIf="metric.inCharts == 0" [dtOverlay]="overlay" >
+            <dt-icon class="metric-nok" name="incident"></dt-icon>
+          </dt-card-icon>
+
+       
+        <dt-card-title>{{metric.timeseries.displayname}}</dt-card-title>
+        <dt-card-subtitle>{{metric.timeseries.key}}</dt-card-subtitle>
+
+        <dt-card-title-actions>
+            <button dt-button variant="secondary">Edit</button>
+        </dt-card-title-actions>
+
+        <dt-key-value-list>
+            <dt-key-value-list-item >
+              <dt-key-value-list-key>Entity</dt-key-value-list-key>
+              <dt-key-value-list-value>{{ metric.entity }}</dt-key-value-list-value>
+            </dt-key-value-list-item>
+
+            <dt-key-value-list-item >
+                <dt-key-value-list-key>Unit</dt-key-value-list-key>
+                <dt-key-value-list-value>{{ metric.timeseries.unit }}</dt-key-value-list-value>
+              </dt-key-value-list-item>
+
+              <dt-key-value-list-item *ngIf="metric.timeseries.dimensions != undefined" >
+                <dt-key-value-list-key>Dimensions</dt-key-value-list-key>
+                <dt-key-value-list-value>{{ metric.timeseries.dimensions }}</dt-key-value-list-value>
+              </dt-key-value-list-item>
+
+              <dt-key-value-list-item >
+                <dt-key-value-list-key>Charts</dt-key-value-list-key>
+                <dt-key-value-list-value>{{ metric.inCharts }}</dt-key-value-list-value>
+              </dt-key-value-list-item>
+
+              
+
+          </dt-key-value-list>
+          
+    </dt-card>
+</div>
+
+<ng-template #overlay>
+    <div class="dt-overlay-example-content-wrapper">
+      <p>This metric belongs to no charts</p>
+    </div>
+  </ng-template>
