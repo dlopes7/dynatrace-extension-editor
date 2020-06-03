@@ -17,7 +17,7 @@
       <dt-card-title>Upload a plugin.json file</dt-card-title>
       <dt-card-subtitle></dt-card-subtitle>
       <div class="upload-label">
-        This app allows you to customize your extension. You can add metrics, properties, charts, icons.<br>It will also
+        Allows you to customize your extension. You can add metrics, properties, charts, icons.<br>It will also
         scan your plugin.json for missing properties and charts.
       </div>
     </dt-card>
@@ -43,32 +43,28 @@
 
   </div>
 
-  <!-- <div class="upload-card">
+  <div class="upload-card">
     <dt-card>
       <dt-card-icon>
-        <dt-icon name="https"></dt-icon>
+        <dt-icon name="coding"></dt-icon>
       </dt-card-icon>
-      <dt-card-title>Load a plugin.json file from a URL</dt-card-title>
-      <dt-card-subtitle></dt-card-subtitle>
+      <dt-card-title>Create a new extension</dt-card-title>
+      <dt-card-subtitle>Create an Activegate or an Oneagent extension from a basic template</dt-card-subtitle>
       <div class="upload-label">
       </div>
     </dt-card>
 
 
-     <div class="upload-button upload-from-url">
-      <form [formGroup]="loadFromURLForm" (ngSubmit)="loadFromURL()">
-      <dt-form-field>
-        <input type="text" dtInput placeholder="https://github.com/BraydenNeale/DT-SNMP/blob/master/plugin.json" formControlName="url" />
-        <button dt-icon-button dtSuffix variant="nested" aria-label="Submit changes">
-          <dt-icon name="checkmark"></dt-icon>
-        </button>
-        <dt-error>A wild error appears</dt-error>
-      </dt-form-field>
-      </form>
+    <div class="upload-button">
+      <dt-alert *ngIf="uploadError" severity="error" #alert1>{{uploadErrorMessage}}</dt-alert>
+      <button dt-button variant="secondary" (click)="createFromTemplate()">
+        <dt-icon name="coding"></dt-icon>
+        Create
+      </button>
       
     </div> 
 
-  </div> -->
+  </div> 
 
 
 
