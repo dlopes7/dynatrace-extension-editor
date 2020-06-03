@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Property } from '../models/property';
 import { DtOverlayConfig } from '@dynatrace/barista-components/overlay';
 import { PluginJsonService } from '../shared/services/plugin-json.service';
+import { PluginWrapper } from '../models/plugin-wrapper';
 
 @Component({
   selector: 'app-editor-properties',
@@ -10,9 +11,7 @@ import { PluginJsonService } from '../shared/services/plugin-json.service';
 })
 export class EditorPropertiesComponent implements OnInit {
 
-  pluginJson: any;
-  properties: Property[] = [];
-
+  pluginWrapper: PluginWrapper;
 
   config: DtOverlayConfig = {
     pinnable: true,
@@ -24,30 +23,9 @@ export class EditorPropertiesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pluginJsonService.pluginJsonSource.subscribe(pluginJson => this.pluginJson = pluginJson);
-    this.createProperties();
+    this.pluginJsonService.pluginJsonSource.subscribe(pluginWrapper => this.pluginWrapper = pluginWrapper);
   }
 
-  createProperties() {
-    this.pluginJson.properties.forEach(pluginProperty => {
-      let property = new Property();
 
-      property.key = pluginProperty.key;
-      property.type = pluginProperty.type;
-
-      if (this.pluginJson.configUI.properties != undefined) {
-        this.pluginJson.configUI.properties.forEach(configUIProperty => {
-          if (property.key == configUIProperty.key) {
-            property.displayName = configUIProperty.displayName;
-            property.displayHint = configUIProperty.displayHint;
-            property.displayOrder = configUIProperty.displayOrder;
-          }
-        });
-      }
-
-      this.properties.push(property);
-
-    });
-  }
 
 }

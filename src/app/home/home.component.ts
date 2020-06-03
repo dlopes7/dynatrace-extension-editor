@@ -3,9 +3,10 @@ import { PluginJsonService } from '../shared/services/plugin-json.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-import { pluginAGTemplate } from "../models/plugin_ag_template"
+import { pluginAGTemplate } from "../models/plugin-template"
 
 import { DtToast } from '@dynatrace/barista-components/toast';
+import { PluginWrapper } from '../models/plugin-wrapper';
 
 @Component({
   selector: 'app-home',
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit {
     fileReader.onload = () => {
       try {
         let parsedJson = JSON.parse(fileReader.result.toString());
-        this.pluginJsonService.changePluginJson(parsedJson);
+        this.pluginJsonService.changePluginJson(new PluginWrapper(parsedJson));
         this.uploadErrorMessage = "";
         this.uploadError = false;
         this.uploadSuccess = true;
@@ -66,7 +67,8 @@ export class HomeComponent implements OnInit {
   }
 
   createFromTemplate() {
-    this.pluginJsonService.changePluginJson(pluginAGTemplate);
+    let wrapper = new PluginWrapper(pluginAGTemplate);
+    this.pluginJsonService.changePluginJson(wrapper);
     this.toast.create('Plugin created successfully!');
   }
 

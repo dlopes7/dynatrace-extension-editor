@@ -9,4 +9,13 @@
         Dynatrace extension editor
       </a>
     </dt-top-bar-navigation-item>
+
+    <dt-top-bar-navigation-item align="end" *ngIf="pluginWrapper.problems > 0">
+      <a routerLink="/editor/metrics" dtTopBarAction hasProblem>{{ pluginWrapper.problems }}</a>
+    </dt-top-bar-navigation-item>
+
+    <dt-top-bar-navigation-item align="end">
+      <button dtTopBarAction><dt-icon name="user-uem"></dt-icon></button>
+    </dt-top-bar-navigation-item>
+
   </dt-top-bar-navigation>

@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="metric-card" [class.key-metric]="metric.isKeyMetric" *ngFor="let metric of metrics">
+    <div class="metric-card" [class.key-metric]="metric.isKeyMetric" *ngFor="let metric of pluginWrapper.metrics">
 
         <dt-card>
             <!-- Indicator for charts -->

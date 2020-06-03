@@ -2,6 +2,7 @@ import { Injectable, OnInit} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import {pluginJson} from "./plugin_json";
+import { PluginWrapper } from 'src/app/models/plugin-wrapper';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +10,15 @@ import {pluginJson} from "./plugin_json";
 
 export class PluginJsonService {
 
-  pluginJsonSource = new BehaviorSubject<any>({});
-  pluginJson = this.pluginJsonSource.asObservable();
+  pluginJsonSource = new BehaviorSubject<PluginWrapper>(new PluginWrapper());
+  pluginWrapper = this.pluginJsonSource.asObservable();
 
   constructor() {
-    this.changePluginJson(pluginJson);
-   }
+    this.changePluginJson(new PluginWrapper(pluginJson));
+  }
 
-  changePluginJson(pluginJson: any) {
-    this.pluginJsonSource.next(pluginJson);
+  changePluginJson(pluginWrapper: PluginWrapper) {
+    this.pluginJsonSource.next(pluginWrapper);
   }
 
 }
