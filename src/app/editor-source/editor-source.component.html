@@ -1,6 +1,6 @@
 <div class="dt-demo-card">
     <dt-card>
-      <dt-card-title>Source for {{pluginJson.name}}</dt-card-title>
+      <dt-card-title>Source for {{pluginWrapper.pluginJson.name}}</dt-card-title>
       <dt-card-subtitle>Package details</dt-card-subtitle>
       <dt-card-title-actions>
         <button dt-button variant="secondary">Some Action</button>
@@ -10,17 +10,17 @@
       <div>
         <div class="prop-editor">
           <dt-label class="left">Package</dt-label>
-          <em class="right" [(ngModel)]="pluginJson.source.package" dt-inline-editor></em>
+          <em class="right" [(ngModel)]="pluginWrapper.pluginJson.source.package" dt-inline-editor></em>
         </div>
 
         <div class="prop-editor">
           <dt-label class="left">Class</dt-label>
-          <em class="right" [(ngModel)]="pluginJson.source.className" dt-inline-editor></em>
+          <em class="right" [(ngModel)]="pluginWrapper.pluginJson.source.className" dt-inline-editor></em>
         </div>
 
         <div class="prop-editor">
           <dt-label class="left">Install requires</dt-label>
-          <em class="right" [(ngModel)]="pluginJson.source.install_requires" dt-inline-editor></em>
+          <em class="right" [(ngModel)]="pluginWrapper.pluginJson.source.install_requires" dt-inline-editor></em>
         </div>
 
   

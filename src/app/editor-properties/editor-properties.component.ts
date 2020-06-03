@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Property } from '../models/property';
-import { DtOverlayConfig } from '@dynatrace/barista-components/overlay';
 import { PluginJsonService } from '../shared/services/plugin-json.service';
 import { PluginWrapper } from '../models/plugin-wrapper';
 
@@ -12,11 +10,6 @@ import { PluginWrapper } from '../models/plugin-wrapper';
 export class EditorPropertiesComponent implements OnInit {
 
   pluginWrapper: PluginWrapper;
-
-  config: DtOverlayConfig = {
-    pinnable: true,
-    originY: 'center',
-  };
 
 
   constructor(private pluginJsonService: PluginJsonService) {

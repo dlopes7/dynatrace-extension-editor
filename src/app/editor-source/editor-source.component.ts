@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PluginJsonService } from '../shared/services/plugin-json.service';
+import { PluginWrapper } from '../models/plugin-wrapper';
 
 @Component({
   selector: 'app-editor-source',
@@ -8,11 +9,11 @@ import { PluginJsonService } from '../shared/services/plugin-json.service';
 })
 export class EditorSourceComponent implements OnInit {
 
-  pluginJson: any;
+  pluginWrapper: PluginWrapper;
 
   constructor(private pluginJsonService: PluginJsonService) {}
 
   ngOnInit(): void {
-    this.pluginJsonService.pluginJsonSource.subscribe(pluginJson => this.pluginJson = pluginJson);
+    this.pluginJsonService.pluginJsonSource.subscribe(pluginWrapper => this.pluginWrapper = pluginWrapper);
   }
 }

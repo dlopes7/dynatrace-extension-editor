@@ -1,6 +1,6 @@
 <div class="dt-demo-card">
   <dt-card>
-    <dt-card-title>Metadata for {{pluginJson.name}}</dt-card-title>
+    <dt-card-title>Metadata for {{pluginWrapper.pluginJson.name}}</dt-card-title>
     <dt-card-subtitle>Name, version, technologies, etc</dt-card-subtitle>
     <dt-card-title-actions>
       <button dt-button variant="secondary">Some Action</button>
@@ -10,37 +10,37 @@
     <div>
       <div class="prop-editor">
         <dt-label class="left">Name</dt-label>
-        <em class="right" [(ngModel)]="pluginJson.name" dt-inline-editor></em>
+        <em class="right" [(ngModel)]="pluginWrapper.pluginJson.name" dt-inline-editor></em>
       </div>
 
       <div class="prop-editor">
         <dt-label class="left">Version</dt-label>
-        <em class="right" [(ngModel)]="pluginJson.version" dt-inline-editor></em>
+        <em class="right" [(ngModel)]="pluginWrapper.pluginJson.version" dt-inline-editor></em>
       </div>
 
         <div class="prop-editor">
           <dt-label class="left">Type</dt-label>
-          <em class="right" [(ngModel)]="pluginJson.type" dt-inline-editor></em>
+          <em class="right" [(ngModel)]="pluginWrapper.pluginJson.type" dt-inline-editor></em>
         </div>
 
         <div class="prop-editor">
           <dt-label class="left">Technologies</dt-label>
-          <em class="right" [(ngModel)]="pluginJson.technologies" dt-inline-editor></em>
+          <em class="right" [(ngModel)]="pluginWrapper.pluginJson.technologies" dt-inline-editor></em>
         </div>
 
         <div class="prop-editor">
           <dt-label class="left">Favicon</dt-label>
-          <em class="right" [(ngModel)]="pluginJson.favicon" dt-inline-editor></em>
+          <em class="right" [(ngModel)]="pluginWrapper.pluginJson.favicon" dt-inline-editor></em>
         </div>
 
         <div class="prop-editor">
           <dt-label class="left">Entity</dt-label>
-          <em class="right" [(ngModel)]="pluginJson.entity" dt-inline-editor></em>
+          <em class="right" [(ngModel)]="pluginWrapper.pluginJson.entity" dt-inline-editor></em>
         </div>
 
         <div class="prop-editor">
           <dt-label class="left">Metric group </dt-label>
-          <em class="right" [(ngModel)]="pluginJson.metricGroup" dt-inline-editor></em>
+          <em class="right" [(ngModel)]="pluginWrapper.pluginJson.metricGroup" dt-inline-editor></em>
         </div>
 
       </div>

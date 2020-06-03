@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PluginJsonService } from '../shared/services/plugin-json.service';
-import { DtOverlayConfig } from "@dynatrace/barista-components/overlay";
-import { Metric } from "../models/metric";
 import { PluginWrapper } from '../models/plugin-wrapper';
 
 @Component({
@@ -12,11 +10,6 @@ import { PluginWrapper } from '../models/plugin-wrapper';
 export class EditorMetricsComponent implements OnInit {
 
   pluginWrapper: PluginWrapper;
-
-  config: DtOverlayConfig = {
-    pinnable: true,
-    originY: 'center',
-  };
 
   constructor(private pluginJsonService: PluginJsonService) { }
 
