@@ -1,0 +1,49 @@
+.metric-card {
+    float: left;
+    width: 20%;
+    border: 2px solid #ececec;
+    margin: 20px;
+    padding: 4px;
+    text-overflow: ellipsis;
+}
+
+.metric-ok {
+    fill: #9cd575;
+}
+
+.metric-nok {
+    fill: #c41425;
+}
+
+.key-metric {
+    border: 2px solid #ffe11c;
+}
+
+::ng-deep .dt-overlay-example-content-wrapper p {
+    margin-top: 0;
+}
+
+::ng-deep .dt-overlay-example-content-wrapper dt-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.metrics-control {
+    padding-left: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.metrics-control-button {
+    display: inline;
+    margin-right: 20px;
+}
+
+.hint {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

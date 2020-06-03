@@ -26,7 +26,7 @@ export class EditorMetricsComponent implements OnInit {
   }
 
   createMetrics() {
-    this.pluginJson.metrics.some(pluginMetric => {
+    this.pluginJson.metrics.forEach(pluginMetric => {
       let metric = new Metric();
 
       metric.entity = pluginMetric.entity;
@@ -50,8 +50,8 @@ export class EditorMetricsComponent implements OnInit {
 
         // Check how many charts
         if (this.pluginJson.ui.charts != undefined) {
-          this.pluginJson.ui.charts.some(chart => {
-            chart.series.some(serie => {
+          this.pluginJson.ui.charts.forEach(chart => {
+            chart.series.forEach(serie => {
               if (serie.key == metric.key) {
                 metric.inCharts += 1;
               }
@@ -61,8 +61,8 @@ export class EditorMetricsComponent implements OnInit {
 
         // Check how many keycharts
         if (this.pluginJson.ui.keycharts != undefined) {
-          this.pluginJson.ui.keycharts.some(chart => {
-            chart.series.some(serie => {
+          this.pluginJson.ui.keycharts.forEach(chart => {
+            chart.series.forEach(serie => {
               if (serie.key == metric.key) {
                 metric.inKeyCharts += 1;
               }

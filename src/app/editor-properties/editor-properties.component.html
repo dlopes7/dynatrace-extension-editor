@@ -1,0 +1,62 @@
+<div>
+    <div class="metrics-control">
+        <div class="metrics-control-buttons">
+            <!-- <div class="metrics-control-button"> -->
+            <button dt-button class="metrics-control-button">
+                <dt-icon name="perfromance-health"></dt-icon>
+                Create new property
+            </button>
+            <!-- </div> -->
+
+            <!-- <div class="metrics-control-button"> -->
+            <button dt-button variant="secondary" class="metrics-control-button">
+                <dt-icon name="area-chart"></dt-icon>
+                Create missing config UI properties
+            </button>
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <div class="metric-card" *ngFor="let property of properties">
+
+        <dt-card>
+            <!-- Indicator for charts -->
+            <dt-card-icon *ngIf="property.displayName != undefined && property.displayOrder != undefined">
+                <dt-icon class="metric-ok" name="checkmark"></dt-icon>
+            </dt-card-icon>
+            <dt-card-icon *ngIf="property.displayName == undefined && property.displayOrder == undefined"
+                [dtOverlay]="overlay" [dtOverlayConfig]="config">
+                <dt-icon class="metric-nok" name="incident"></dt-icon>
+            </dt-card-icon>
+
+
+            <dt-card-title>{{property.displayName}}</dt-card-title>
+            <dt-card-subtitle>{{property.key }}</dt-card-subtitle>
+
+            <dt-card-footer-actions>
+                <button dt-button variant="secondary">Edit</button>
+            </dt-card-footer-actions>
+
+            <div class="properties-list">
+                <dt-key-value-list class="hint">
+                    <dt-key-value-list-item>
+                        <dt-key-value-list-key>Display order</dt-key-value-list-key>
+                        <dt-key-value-list-value>{{ property.displayOrder }}</dt-key-value-list-value>
+                    </dt-key-value-list-item>
+
+                    <dt-key-value-list-item>
+                        <dt-key-value-list-key>Display hint</dt-key-value-list-key>
+                        <dt-key-value-list-value>{{ property.displayHint }}</dt-key-value-list-value>
+                    </dt-key-value-list-item>
+
+                </dt-key-value-list>
+            </div>
+        </dt-card>
+    </div>
+</div>
+
+<ng-template #overlay>
+    <div class="dt-overlay-example-content-wrapper">
+        <p>This property has no displayName or displayOrder</p>
+    </div>
+</ng-template>

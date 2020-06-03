@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditorMetricsComponent } from './editor-metrics.component';
+import { EditorPropertiesComponent } from './editor-properties.component';
 import { DtCardModule } from '@dynatrace/barista-components/card';
 import { PluginJsonService } from '../shared/services/plugin-json.service';
 import { DtButtonModule } from '@dynatrace/barista-components/button';
@@ -12,7 +12,7 @@ import { DtOverlayModule  } from '@dynatrace/barista-components/overlay';
 
 @NgModule({
   providers: [PluginJsonService],
-  declarations: [EditorMetricsComponent],
+  declarations: [EditorPropertiesComponent],
   imports: [
     CommonModule,
     DtCardModule,
@@ -22,4 +22,4 @@ import { DtOverlayModule  } from '@dynatrace/barista-components/overlay';
     DtOverlayModule 
   ]
 })
-export class EditorMetricsModule { }
+export class EditorPropertiesModule { }

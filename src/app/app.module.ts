@@ -15,6 +15,7 @@ import { EditorUiModule } from './editor-ui/editor-ui.module';
 import { EditorMetadataComponent } from './editor-metadata/editor-metadata.component';
 import { EditorSourceComponent } from './editor-source/editor-source.component';
 import { EditorMetricsComponent } from './editor-metrics/editor-metrics.component';
+import { EditorPropertiesComponent } from './editor-properties/editor-properties.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,7 @@ const routes: Routes = [
       children: [
           {path: 'metadata', component: EditorMetadataComponent},
           {path: 'source', component: EditorSourceComponent},
-          {path: 'properties', component: EditorSourceComponent},
+          {path: 'properties', component: EditorPropertiesComponent},
           {path: 'metrics', component: EditorMetricsComponent}
       ]}
 ];
