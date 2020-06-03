@@ -10,12 +10,16 @@ import { DtIconModule } from '@dynatrace/barista-components/icon';
 
 import { HomeModule } from './home/home.module';
 import { HomeComponent } from './home/home.component';
-import { EditorUiComponent } from './editor-ui/editor-ui.component';
 import { EditorUiModule } from './editor-ui/editor-ui.module';
+import { EditorUiComponent } from './editor-ui/editor-ui.component';
+import { DownloadModule } from './download/download.module';
+import { DownloadComponent } from './download/download.component';
+
 import { EditorMetadataComponent } from './editor-metadata/editor-metadata.component';
 import { EditorSourceComponent } from './editor-source/editor-source.component';
 import { EditorMetricsComponent } from './editor-metrics/editor-metrics.component';
 import { EditorPropertiesComponent } from './editor-properties/editor-properties.component';
+
 
 
 const routes: Routes = [
@@ -27,7 +31,9 @@ const routes: Routes = [
           {path: 'source', component: EditorSourceComponent},
           {path: 'properties', component: EditorPropertiesComponent},
           {path: 'metrics', component: EditorMetricsComponent}
-      ]}
+      ]},
+  {path: 'download', component: DownloadComponent}
+
 ];
 
 @NgModule({
@@ -42,7 +48,8 @@ const routes: Routes = [
     RouterModule,
     DtIconModule.forRoot({ svgIconLocation: 'https://unpkg.com/@dynatrace/barista-icons/{{name}}.svg' }),
     HomeModule,
-    EditorUiModule
+    EditorUiModule,
+    DownloadModule
 
   ],
   providers: [],

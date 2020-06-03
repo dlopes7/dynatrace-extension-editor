@@ -1,1 +1,35 @@
-<p>download works!</p>
+<dt-drawer-container class="editor-ui-main">
+    <dt-drawer #drawer_menu opened>
+        <app-editor-menu [drawer]=drawer_menu></app-editor-menu>
+    </dt-drawer>
+
+    <app-editor-top-bar [drawer]=drawer_menu></app-editor-top-bar>
+
+    <dt-breadcrumbs aria-label="Breadcrumbs navigation">
+        <a dtBreadcrumbsItem href="download">Download</a>
+    </dt-breadcrumbs>
+
+    <div class="upload-card">
+        <dt-card>
+            <dt-card-icon>
+                <dt-icon name="cloud-download"></dt-icon>
+            </dt-card-icon>
+            <dt-card-title>Download plugin.json</dt-card-title>
+            <dt-card-subtitle></dt-card-subtitle>
+            <div class="upload-label">
+                Download the edited plugin.json
+            </div>
+        </dt-card>
+
+
+        <div class="upload-button">
+            <button dt-button variant="secondary" (click)="downloader.click()">
+                <dt-icon name="cloud-download"></dt-icon>
+                Download plugin.json
+            </button>
+        </div>
+    </div>
+
+</dt-drawer-container>
+
+<a hidden #downloader [href]="fileUrl" download="plugin.json" ></a>

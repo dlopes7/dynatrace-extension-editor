@@ -1,0 +1,41 @@
+.editor-ui-main{
+    height: 100%;
+}
+
+.plugin-navigator{
+    width: 280px;
+}
+
+.dt-drawer{
+    padding: 0;
+    padding-right: 0;
+    border-right: 0px;
+}
+.dt-menu{
+    height: 100%;
+    width: 240px;
+}
+
+/*If I don't do this, the element goes beyond the parent width*/
+.dt-menu-item{
+    width: unset !important;
+}
+
+.upload-button {
+    padding-left: 20px;
+    float: left;
+}
+
+.dt-alert {
+    padding-bottom: 5px;
+
+}
+
+.upload-card {
+    width: 40%;
+    padding-bottom: 50px;
+}
+
+.upload-from-url {
+    width: 80%;
+}

@@ -14,7 +14,7 @@ import { PluginWrapper } from '../models/plugin-wrapper';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  pluginJson: any;
+  pluginWrapper: PluginWrapper;
   uploadError: boolean;
   uploadSuccess: boolean;
   uploadErrorMessage: string;
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pluginJsonService.pluginJsonSource.subscribe(pluginJson => this.pluginJson = pluginJson);
+    this.pluginJsonService.pluginJsonSource.subscribe(pluginWrapper => this.pluginWrapper = pluginWrapper);
 
   }
 
