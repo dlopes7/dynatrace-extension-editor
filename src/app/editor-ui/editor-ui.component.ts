@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,35 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorUiComponent implements OnInit {
 
+  constructor(private router:Router) {}
 
-  constructor() { 
-    
+  getRouter() : Router {
+    return this.router;
   }
 
   ngOnInit(): void {
-    // this.parseProperties();
+
   }
 
-  // parseProperties(): void {
 
-  //   if (!this.pluginJson.configUI) {
-  //     this.pluginJson.configUI = {
-  //       "displayName": this.pluginJson.name,
-  //       "properties": []
-  //     };
-  //   }
-
-  //   this.pluginJson.properties.forEach(property => {
-      
-      
-  //     property.configUIProperty = this.pluginJson.configUI.properties.find((prop) => {
-  //       if (prop.key == property.key) {
-  //         return prop;
-  //       }
-  //     });
-  //     console.log(property);
-
-  //   });
-  // }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PluginJsonService } from '../shared/services/plugin-json.service';
 import { DtOverlayConfig } from "@dynatrace/barista-components/overlay";
+import { Metric } from "../models/metric";
 
 @Component({
   selector: 'app-editor-metrics',
@@ -10,6 +11,7 @@ import { DtOverlayConfig } from "@dynatrace/barista-components/overlay";
 export class EditorMetricsComponent implements OnInit {
 
   pluginJson: any;
+  metrics: Metric[] = [];
 
   config: DtOverlayConfig = {
     pinnable: true,
@@ -20,43 +22,65 @@ export class EditorMetricsComponent implements OnInit {
 
   ngOnInit(): void {
     this.pluginJsonService.pluginJsonSource.subscribe(pluginJson => this.pluginJson = pluginJson);
-    this.checkMetrics();
+    this.createMetrics();
   }
 
-  checkMetrics() {
-    this.pluginJson.metrics.some(metric => {
+  createMetrics() {
+    this.pluginJson.metrics.some(pluginMetric => {
+      let metric = new Metric();
+
+      metric.entity = pluginMetric.entity;
+
       metric.inCharts = 0;
-      metric.keyMetric = false;
+      metric.inKeyCharts = 0;
+      metric.isKeyMetric = false;
+      metric.type = pluginMetric.timeseries != undefined ? "timeseries" : "statetimeseries";
+      metric.displayname = pluginMetric.timeseries != undefined ? pluginMetric.timeseries.displayname : pluginMetric.statetimeseries.displayname;
+      metric.key = pluginMetric.timeseries != undefined ? pluginMetric.timeseries.key : pluginMetric.statetimeseries.key;
 
-      if (this.pluginJson.ui == undefined || this.pluginJson.ui.keycharts == undefined && this.pluginJson.ui.charts == undefined) {
-        return
+      if (metric.type == "timeseries") {
+        metric.dimensions = pluginMetric.timeseries.dimensions != undefined ? pluginMetric.timeseries.dimensions : [];
+      } else {
+        metric.dimensions = pluginMetric.statetimeseries.dimensions != undefined ? pluginMetric.statetimeseries.dimensions : [];
+      }
+      metric.unit = metric.type == "timeseries" ? pluginMetric.timeseries.unit : "State";
+
+      // If we do not define charts, don't even bother checking
+      if (this.pluginJson.ui != undefined) {
+
+        // Check how many charts
+        if (this.pluginJson.ui.charts != undefined) {
+          this.pluginJson.ui.charts.some(chart => {
+            chart.series.some(serie => {
+              if (serie.key == metric.key) {
+                metric.inCharts += 1;
+              }
+            });
+          });
+        }
+
+        // Check how many keycharts
+        if (this.pluginJson.ui.keycharts != undefined) {
+          this.pluginJson.ui.keycharts.some(chart => {
+            chart.series.some(serie => {
+              if (serie.key == metric.key) {
+                metric.inKeyCharts += 1;
+              }
+            });
+          });
+        }
+
+        // Check if it is a keymetric
+        if (this.pluginJson.ui.keymetrics != undefined) {
+          this.pluginJson.ui.keymetrics.some(keymetric => {
+            if (keymetric.key == metric.key) {
+              metric.isKeyMetric = true;
+            }
+          });
+        }
       }
 
-      else {
-      this.pluginJson.ui.charts.some(chart => {
-        chart.series.some(serie => {
-          if (serie.key == metric.timeseries.key) {
-            metric.inCharts += 1;
-          }
-        });
-      });
-
-      this.pluginJson.ui.keycharts.some(chart => {
-        chart.series.some(serie => {
-          if (serie.key == metric.timeseries.key) {
-            metric.inCharts += 1;
-          }
-        });
-      });
-
-      if (this.pluginJson.ui.keymetrics != undefined) {
-        this.pluginJson.ui.keymetrics.some(keymetric => {
-          if (keymetric.key == metric.timeseries.key) {
-            metric.keyMetric = true;
-          }
-        });
-      }
-    }
+      this.metrics.push(metric);
     });
   }
 

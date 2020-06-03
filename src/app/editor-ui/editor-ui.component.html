@@ -5,8 +5,12 @@
  
   <app-editor-top-bar [drawer]=drawer_menu></app-editor-top-bar>
 
-  <dt-breadcrumbs aria-label="Breadcrumbs navigation">
+  <dt-breadcrumbs aria-label="Breadcrumbs navigation" [ngSwitch]="getRouter().url">
     <a dtBreadcrumbsItem href="editor">Editor</a>
+    <a dtBreadcrumbsItem href="editor/metrics" *ngSwitchCase="'/editor/metrics'">Metrics</a>
+    <a dtBreadcrumbsItem href="editor/metadata" *ngSwitchCase="'/editor/metadata'">Metadata</a>
+    <a dtBreadcrumbsItem href="editor/source" *ngSwitchCase="'/editor/source'">Source</a>
+    <a dtBreadcrumbsItem href="editor/properties" *ngSwitchCase="'/editor/properties'">Properties</a>
   </dt-breadcrumbs>
 
   <dt-drawer-container class="editor-ui-main">
