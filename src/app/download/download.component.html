@@ -9,27 +9,29 @@
         <a dtBreadcrumbsItem href="download">Download</a>
     </dt-breadcrumbs>
 
-    <div class="upload-card">
-        <dt-card>
-            <dt-card-icon>
-                <dt-icon name="cloud-download"></dt-icon>
-            </dt-card-icon>
-            <dt-card-title>Download plugin.json</dt-card-title>
-            <dt-card-subtitle></dt-card-subtitle>
-            <div class="upload-label">
-                Download the edited plugin.json
+    <div class="main-container">
+        <div class="upload-card">
+            <dt-card>
+                <dt-card-icon>
+                    <dt-icon name="cloud-download"></dt-icon>
+                </dt-card-icon>
+                <dt-card-title>Download plugin.json</dt-card-title>
+                <dt-card-subtitle></dt-card-subtitle>
+                <div class="upload-label">
+                    Download the edited plugin.json
+                </div>
+            </dt-card>
+
+
+            <div class="upload-button">
+                <button dt-button variant="secondary" (click)="downloader.click()">
+                    <dt-icon name="cloud-download"></dt-icon>
+                    Download plugin.json
+                </button>
             </div>
-        </dt-card>
-
-
-        <div class="upload-button">
-            <button dt-button variant="secondary" (click)="downloader.click()">
-                <dt-icon name="cloud-download"></dt-icon>
-                Download plugin.json
-            </button>
         </div>
     </div>
 
 </dt-drawer-container>
 
-<a hidden #downloader [href]="fileUrl" download="plugin.json" ></a>
+<a hidden #downloader [href]="fileUrl" download="plugin.json"></a>

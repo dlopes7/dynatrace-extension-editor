@@ -1,73 +1,73 @@
 <dt-drawer-container class="editor-ui-main">
-  <dt-drawer #drawer_menu opened>
-    <app-editor-menu [drawer]=drawer_menu></app-editor-menu>
-  </dt-drawer>
+    <dt-drawer #drawer_menu opened>
+      <app-editor-menu [drawer]=drawer_menu></app-editor-menu>
+    </dt-drawer>
 
-  <app-editor-top-bar [drawer]=drawer_menu></app-editor-top-bar>
+    <app-editor-top-bar [drawer]=drawer_menu></app-editor-top-bar>
 
-  <dt-breadcrumbs aria-label="Breadcrumbs navigation">
-    <a dtBreadcrumbsItem href="home">Home</a>
-  </dt-breadcrumbs>
+    <dt-breadcrumbs aria-label="Breadcrumbs navigation">
+      <a dtBreadcrumbsItem href="home">Home</a>
+    </dt-breadcrumbs>
 
-  <div class="upload-card">
-    <dt-card>
-      <dt-card-icon>
-        <dt-icon name="cloud-upload"></dt-icon>
-      </dt-card-icon>
-      <dt-card-title>Upload a plugin.json file</dt-card-title>
-      <dt-card-subtitle></dt-card-subtitle>
-      <div class="upload-label">
-        Allows you to customize your extension. You can add metrics, properties, charts, icons.<br>It will also
-        scan your plugin.json for missing properties and charts.
+    <div class="main-container">
+    <div class="upload-card">
+      <dt-card>
+        <dt-card-icon>
+          <dt-icon name="cloud-upload"></dt-icon>
+        </dt-card-icon>
+        <dt-card-title>Upload a plugin.json file</dt-card-title>
+        <dt-card-subtitle></dt-card-subtitle>
+        <div class="upload-label">
+          Allows you to customize your extension. You can add metrics, properties, charts, icons.<br>It will also
+          scan your plugin.json for missing properties and charts.
+        </div>
+      </dt-card>
+
+
+      <div class="upload-button">
+        <dt-alert *ngIf="uploadError" severity="error" #alert1>{{uploadErrorMessage}}</dt-alert>
+        <button dt-button variant="secondary" (click)="uploader.click()">
+          <dt-icon name="cloud-upload"></dt-icon>
+          Upload plugin.json
+        </button>
+
       </div>
-    </dt-card>
-
-
-    <div class="upload-button">
-      <dt-alert *ngIf="uploadError" severity="error" #alert1>{{uploadErrorMessage}}</dt-alert>
-      <button dt-button variant="secondary" (click)="uploader.click()">
-        <dt-icon name="cloud-upload"></dt-icon>
-        Upload plugin.json
-      </button>
+      <div *ngIf="uploadSuccess" class="uploaded-checkmark">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px"
+          y="0px" width="30px" height="30px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" space="preserve"
+          fill="#6bcb8b">
+          <polygon
+            points="453.44849,132.55295 404.42163,91.41453 203.87195,330.42038 99.68994,243.00125 	58.55151,292.02811 211.76038,420.58566 ">
+          </polygon>
+        </svg>
+      </div>
 
     </div>
-    <div *ngIf="uploadSuccess" class="uploaded-checkmark">
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px"
-        y="0px" width="30px" height="30px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" space="preserve"
-        fill="#6bcb8b">
-        <polygon
-          points="453.44849,132.55295 404.42163,91.41453 203.87195,330.42038 99.68994,243.00125 	58.55151,292.02811 211.76038,420.58566 ">
-        </polygon>
-      </svg>
+
+    <div class="upload-card">
+      <dt-card>
+        <dt-card-icon>
+          <dt-icon name="coding"></dt-icon>
+        </dt-card-icon>
+        <dt-card-title>Create a new extension</dt-card-title>
+        <dt-card-subtitle>Create an Activegate or an Oneagent extension from a basic template</dt-card-subtitle>
+        <div class="upload-label">
+        </div>
+      </dt-card>
+
+
+      <div class="upload-button">
+        <dt-alert *ngIf="uploadError" severity="error" #alert1>{{uploadErrorMessage}}</dt-alert>
+        <button dt-button variant="secondary" (click)="createFromTemplate()">
+          <dt-icon name="coding"></dt-icon>
+          Create
+        </button>
+
+      </div>
+
     </div>
 
   </div>
-
-  <div class="upload-card">
-    <dt-card>
-      <dt-card-icon>
-        <dt-icon name="coding"></dt-icon>
-      </dt-card-icon>
-      <dt-card-title>Create a new extension</dt-card-title>
-      <dt-card-subtitle>Create an Activegate or an Oneagent extension from a basic template</dt-card-subtitle>
-      <div class="upload-label">
-      </div>
-    </dt-card>
-
-
-    <div class="upload-button">
-      <dt-alert *ngIf="uploadError" severity="error" #alert1>{{uploadErrorMessage}}</dt-alert>
-      <button dt-button variant="secondary" (click)="createFromTemplate()">
-        <dt-icon name="coding"></dt-icon>
-        Create
-      </button>
-      
-    </div> 
-
-  </div> 
-
-
-
 </dt-drawer-container>
 
 <input hidden type="file" #uploader (change)="uploadFile($event)" />
