@@ -19,6 +19,7 @@ import { EditorMetadataComponent } from './editor-metadata/editor-metadata.compo
 import { EditorSourceComponent } from './editor-source/editor-source.component';
 import { EditorMetricsComponent } from './editor-metrics/editor-metrics.component';
 import { EditorPropertiesComponent } from './editor-properties/editor-properties.component';
+import { EditorMetricDetailsComponent } from './editor-metric-details/editor-metric-details.component'
 
 
 
@@ -30,7 +31,8 @@ const routes: Routes = [
           {path: 'metadata', component: EditorMetadataComponent},
           {path: 'source', component: EditorSourceComponent},
           {path: 'properties', component: EditorPropertiesComponent},
-          {path: 'metrics', component: EditorMetricsComponent}
+          {path: 'metrics', component: EditorMetricsComponent},
+          {path: 'metrics/edit', component: EditorMetricDetailsComponent},
       ]},
   {path: 'download', component: DownloadComponent}
 
