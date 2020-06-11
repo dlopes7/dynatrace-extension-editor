@@ -56,7 +56,7 @@ export class EditorMetricDetailsComponent implements OnInit {
   removeDimension(dimensionName) {
 
     this.metric.dimensions = this.metric.dimensions.filter((dimension) => {
-      dimension != dimensionName
+      return dimension != dimensionName
     });
     this.onChange(dimensionName);
   }
@@ -67,9 +67,8 @@ export class EditorMetricDetailsComponent implements OnInit {
   }
 
   removeState(stateName) {
-
     this.metric.states = this.metric.states.filter((state) => {
-      state != stateName
+      return state != stateName;
     });
     this.onChange(stateName);
   }
@@ -79,19 +78,13 @@ export class EditorMetricDetailsComponent implements OnInit {
     this.onChange(stateName);
   }
 
-
-  setType(metricType: string) {
-    this.metric.type = metricType;
+  typeChange(event) {
+    this.metric.type = event.value;
     if (this.metric.type == "timeseries") {
       this.metric.states = null;
     }else {
       this.metric.unit = "State";
     }
-    this.onChange(metricType);
-  }
-
-  typeChange(event) {
-    this.metric.type = event.value;
     this.onChange(event);
   }
 
