@@ -21,5 +21,6 @@ export class Metric {
         this.inCharts = 0;
         this.inKeyCharts = 0;
         this.isKeyMetric = false;
+        this.states = [];
     }
 }

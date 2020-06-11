@@ -15,6 +15,7 @@ import { EditorPropertiesModule } from '../editor-properties/editor-properties.m
 // Dynatrace barista
 import { DtDrawerModule } from '@dynatrace/barista-components/drawer';
 import { DtBreadcrumbsModule } from '@dynatrace/barista-components/breadcrumbs';
+import { EditorMetricDetailsModule } from '../editor-metric-details/editor-metric-details.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { DtBreadcrumbsModule } from '@dynatrace/barista-components/breadcrumbs';
         EditorMetadataModule,
         EditorSourceModule,
         EditorMetricsModule,
-        EditorPropertiesModule
+        EditorPropertiesModule,
+        EditorMetricDetailsModule
     ],
     exports: [EditorUiComponent]
 })

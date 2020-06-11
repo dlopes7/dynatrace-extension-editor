@@ -57,6 +57,7 @@ export class PluginWrapper {
                 metric.dimensions = pluginMetric.timeseries.dimensions != undefined ? pluginMetric.timeseries.dimensions : [];
             } else {
                 metric.dimensions = pluginMetric.statetimeseries.dimensions != undefined ? pluginMetric.statetimeseries.dimensions : [];
+                metric.states = pluginMetric.statetimeseries.states != undefined ? pluginMetric.statetimeseries.states : [];
             }
             metric.unit = metric.type == "timeseries" ? pluginMetric.timeseries.unit : "State";
 
@@ -135,5 +136,18 @@ export class PluginWrapper {
       }
 
 
+      addOrUpdateMetric(newMetric: Metric) {
+          
+        for (let i = 0; i < this.metrics.length; i++) {
+            const metric = this.metrics[i];
+            if (metric.key == newMetric.key){
+                console.log("Old", metric, "new", newMetric);
+                this.metrics[i] = newMetric;
+                return
+            }   
+        }
+        console.log("new", newMetric);
+        this.metrics.push(newMetric);
+    }
 
 }

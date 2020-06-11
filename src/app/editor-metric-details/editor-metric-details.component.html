@@ -1,6 +1,120 @@
 <div class="drawer-main-container">
-    <p>editor-metric-details works! {{key}}</p>
-    {{this.metric.displayname}}
+    <div class="dt-demo-card">
+        <dt-card>
+            <dt-card-title [(ngModel)]="metric.displayname" dt-inline-editor (saved)="onChange($event)"></dt-card-title>
+            <dt-card-subtitle [(ngModel)]="metric.key" dt-inline-editor (saved)="onChange($event)"></dt-card-subtitle>
+            <dt-card-title-actions>
+                <button dt-button variant="secondary" routerLink="/editor/metrics">Cancel</button>
+            </dt-card-title-actions>
+
+
+
+            <div class="metric-editor-container">
+                <form>
+
+                    <div class="metric-editor-field">
+                        <dt-label>Type</dt-label>
+                        <dt-radio-group name="metricType" class="radio-type">
+                            <dt-radio-button class="button-type" value="timeseries"
+                                [checked]="metric.type == 'timeseries'" (change)="typeChange($event)">Timeseries
+                            </dt-radio-button>
+                            <dt-radio-button class="button-type" value="statetimeseries"
+                                [checked]="metric.type == 'statetimeseries'" (change)="typeChange($event)">State
+                            </dt-radio-button>
+                        </dt-radio-group>
+                    </div>
+
+                    <div class="metric-editor-field" *ngIf="metric.type=='statetimeseries'">
+                        <dt-label>States</dt-label>
+                        <dt-tag-list aria-label="A list of tags showing custom groupings.">
+                            <dt-tag removable (removed)="removeState(state)" *ngFor="let state of metric.states">
+                                {{ state }}</dt-tag>
+                            <dt-tag-add placeholder="dimension name" aria-label="tag input"
+                                (tagAdded)="addState($event)"></dt-tag-add>
+                        </dt-tag-list>
+                    </div>
+
+                    <div class="metric-editor-field">
+                        <dt-label>Entity</dt-label>
+                        <dt-radio-group name="metricType" class="radio-type">
+                            <dt-radio-button class="button-type" value="CUSTOM_DEVICE"
+                                [checked]="metric.entity == 'CUSTOM_DEVICE'" (change)="entityChange($event)">Custom device
+                            </dt-radio-button>
+                            <dt-radio-button class="button-type" value="CUSTOM_DEVICE_GROUP"
+                                [checked]="metric.type == 'CUSTOM_DEVICE_GROUP'" (change)="entityChange($event)">Group
+                            </dt-radio-button>
+                        </dt-radio-group>
+                    </div>
+
+
+                    <dt-form-field *ngIf="metric.type=='timeseries'" class="metric-editor-field">
+                        <dt-label>Unit</dt-label>
+                        <dt-select placeholder="{{metric.unit}}" aria-label="Select your unit"
+                            (valueChange)="changeUnit($event)">
+                            <dt-option value="Byte">Byte</dt-option>
+                            <dt-option value="BytePerMinute">BytePerMinute</dt-option>
+                            <dt-option value="BytePerSecond">BytePerSecond</dt-option>
+                            <dt-option value="Count">Count</dt-option>
+                            <dt-option value="KibiByte">KibiByte</dt-option>
+                            <dt-option value="KibiBytePerMinute">KibiBytePerMinute</dt-option>
+                            <dt-option value="KibiBytePerSecond">KibiBytePerSecond</dt-option>
+                            <dt-option value="KiloByte">KiloByte</dt-option>
+                            <dt-option value="KiloBytePerMinute">KiloBytePerMinute</dt-option>
+                            <dt-option value="KiloBytePerSecond">KiloBytePerSecond</dt-option>
+                            <dt-option value="MebiByte">MebiByte</dt-option>
+                            <dt-option value="MebiBytePerMinute">MebiBytePerMinute</dt-option>
+                            <dt-option value="MebiBytePerSecond">MebiBytePerSecond</dt-option>
+                            <dt-option value="MegaByte">MegaByte</dt-option>
+                            <dt-option value="MegaBytePerMinute">MegaBytePerMinute</dt-option>
+                            <dt-option value="MegaBytePerSecond">MegaBytePerSecond</dt-option>
+                            <dt-option value="MicroSecond">MicroSecond</dt-option>
+                            <dt-option value="MilliSecond">MilliSecond</dt-option>
+                            <dt-option value="NanoSecond">NanoSecond</dt-option>
+                            <dt-option value="NotApplicable">NotApplicable</dt-option>
+                            <dt-option value="Percent">Percent</dt-option>
+                            <dt-option value="PerMinute">PerMinute</dt-option>
+                            <dt-option value="PerSecond">PerSecond</dt-option>
+                            <dt-option value="Promille">Promille</dt-option>
+                            <dt-option value="Ratio">Ratio</dt-option>
+                            <dt-option value="Second">Second</dt-option>
+                            <dt-option value="Unspecified">Unspecified</dt-option>
+                        </dt-select>
+                    </dt-form-field>
+
+                    
+
+
+
+                    <div class="metric-editor-field">
+                        <dt-label>Dimensions</dt-label>
+                        <dt-tag-list aria-label="A list of tags showing custom groupings.">
+                            <dt-tag removable (removed)="removeDimension(dimension)"
+                                *ngFor="let dimension of metric.dimensions">{{ dimension }}</dt-tag>
+                            <dt-tag-add placeholder="dimension name" aria-label="tag input"
+                                (tagAdded)="addDimension($event)"></dt-tag-add>
+                        </dt-tag-list>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+
+        </dt-card>
+    </div>
+
 </div>
 
-
+<dt-confirmation-dialog [state]="dialogState" aria-label="Dialog for changes that need to be confirmed or rejected">
+    <dt-confirmation-dialog-state name="dirty">
+        You have pending changes.
+        <dt-confirmation-dialog-actions>
+            <button dt-button variant="secondary" (click)="clear()">Cancel</button>
+            <button dt-button (click)="onSave()">Save</button>
+        </dt-confirmation-dialog-actions>
+    </dt-confirmation-dialog-state>
+    <dt-confirmation-dialog-state name="success">
+        Successfully saved!
+    </dt-confirmation-dialog-state>
+</dt-confirmation-dialog>
