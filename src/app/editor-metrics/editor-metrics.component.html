@@ -1,8 +1,8 @@
-<div>
+<div class="drawer-main-container">
     <div class="metrics-control">
         <div class="metrics-control-buttons">
             <!-- <div class="metrics-control-button"> -->
-                <button dt-button  class="metrics-control-button">
+                <button dt-button  class="metrics-control-button" [routerLink]="['/editor/metrics', 'custom_metric']">
                     <dt-icon name="perfromance-health"></dt-icon>
                     Create new metric
                 </button>
@@ -33,7 +33,7 @@
             <dt-card-subtitle>{{metric.key }}</dt-card-subtitle>
 
             <dt-card-footer-actions>
-                <button dt-button variant="secondary">Edit</button>
+                <button dt-button variant="secondary" [routerLink]="['/editor/metrics', metric.key]" >Edit</button>
                 <button dt-button variant="primary" *ngIf="metric.inCharts == 0 && metric.inKeyCharts == 0">Fix charts</button>
               </dt-card-footer-actions>
 

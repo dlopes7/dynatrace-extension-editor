@@ -44,7 +44,7 @@ export class PluginWrapper {
 
     createMetrics() {
         this.pluginJson.metrics.forEach(pluginMetric => {
-            let metric = new Metric();
+            let metric = new Metric(pluginMetric.timeseries != undefined ? pluginMetric.timeseries.key : pluginMetric.statetimeseries.key);
 
             metric.entity = pluginMetric.entity != undefined ? pluginMetric.entity : this.pluginJson.entity;
             metric.inCharts = 0;
@@ -52,7 +52,6 @@ export class PluginWrapper {
             metric.isKeyMetric = false;
             metric.type = pluginMetric.timeseries != undefined ? "timeseries" : "statetimeseries";
             metric.displayname = pluginMetric.timeseries != undefined ? pluginMetric.timeseries.displayname : pluginMetric.statetimeseries.displayname;
-            metric.key = pluginMetric.timeseries != undefined ? pluginMetric.timeseries.key : pluginMetric.statetimeseries.key;
 
             if (metric.type == "timeseries") {
                 metric.dimensions = pluginMetric.timeseries.dimensions != undefined ? pluginMetric.timeseries.dimensions : [];
@@ -121,5 +120,20 @@ export class PluginWrapper {
     
         });
       }
+
+    
+      getMetric(key: string): Metric {
+        
+        // Can't use forEach because of early exit
+        for (let i = 0; i < this.metrics.length; i++) {
+            const metric = this.metrics[i];
+            if (metric.key == key){
+                return metric;
+            }   
+        }
+       return new Metric(key);
+      }
+
+
 
 }

@@ -40,10 +40,10 @@
     margin-right: 20px;
 }
 
-.hint {
+.properties-list {
+    min-width: unset !important;
     font-size: 12px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-

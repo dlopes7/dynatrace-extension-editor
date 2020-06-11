@@ -32,7 +32,7 @@ const routes: Routes = [
           {path: 'source', component: EditorSourceComponent},
           {path: 'properties', component: EditorPropertiesComponent},
           {path: 'metrics', component: EditorMetricsComponent},
-          {path: 'metrics/edit', component: EditorMetricDetailsComponent},
+          {path: 'metrics/:key', component: EditorMetricDetailsComponent},
       ]},
   {path: 'download', component: DownloadComponent}
 
