@@ -1,25 +1,8 @@
-$fonts-dir: 'https://dlopes7.github.io/dynatrace-extension-editor/fonts/';
+$fonts-dir: 'https://unpkg.com/@dynatrace/barista-fonts/fonts/';
 @import "~@dynatrace/barista-components/style/index";
-@import "@dynatrace/barista-fonts/typography.scss";
-
 
 html, body {
-    margin: 0;
-    height: 100%;
-  }
-
-
-
-.dt-menu-group-header {
-    padding-left: 20px !important;
-    color: #b7b7b7 !important;
-}
-
-.drawer-main-container {
-  background-color: #ffffff;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 20px;
+  margin: 0;
   height: 100%;
 }
 

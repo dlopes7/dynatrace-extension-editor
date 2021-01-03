@@ -1,60 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router'; // CLI imports router
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BaristaWrapperModule } from './barista-wrapper/barista-wrapper.module';
+import { CommonModule } from '@angular/common';
+import { EditorTopBarComponent } from './editor-top-bar/editor-top-bar.component';
+import {DownloadComponent} from './download/download.component';
+import {EditorMenuComponent} from './editor-menu/editor-menu.component';
+import {HomeComponent} from './home/home.component';
+import {EditorUiComponent} from './editor-ui/editor-ui.component';
+import {EditorPropertiesComponent} from './editor-properties/editor-properties.component';
+import {EditorNavigationComponent} from './editor-navigation/editor-navigation.component';
+import {EditorMetricsComponent} from './editor-metrics/editor-metrics.component';
+import {EditorMetricDetailsComponent} from './editor-metric-details/editor-metric-details.component';
+import {EditorMetadataComponent} from './editor-metadata/editor-metadata.component';
+import {FormsModule} from '@angular/forms';
+import {EditorSourceComponent} from './editor-source/editor-source.component';
 
-import { AppComponent } from './app.component';
-
-import { DtIconModule } from '@dynatrace/barista-components/icon';
-
-import { HomeModule } from './home/home.module';
-import { HomeComponent } from './home/home.component';
-import { EditorUiModule } from './editor-ui/editor-ui.module';
-import { EditorUiComponent } from './editor-ui/editor-ui.component';
-import { DownloadModule } from './download/download.module';
-import { DownloadComponent } from './download/download.component';
-
-import { EditorMetadataComponent } from './editor-metadata/editor-metadata.component';
-import { EditorSourceComponent } from './editor-source/editor-source.component';
-import { EditorMetricsComponent } from './editor-metrics/editor-metrics.component';
-import { EditorPropertiesComponent } from './editor-properties/editor-properties.component';
-import { EditorMetricDetailsComponent } from './editor-metric-details/editor-metric-details.component'
-
-
-
-const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'editor', component: EditorUiComponent,
-      children: [
-          {path: 'metadata', component: EditorMetadataComponent},
-          {path: 'source', component: EditorSourceComponent},
-          {path: 'properties', component: EditorPropertiesComponent},
-          {path: 'metrics', component: EditorMetricsComponent},
-          {path: 'metrics/:key', component: EditorMetricDetailsComponent},
-      ]},
-  {path: 'download', component: DownloadComponent}
-
-];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditorMenuComponent,
+    EditorMetadataComponent,
+    EditorMetricDetailsComponent,
+    EditorMetricsComponent,
+    EditorNavigationComponent,
+    EditorTopBarComponent,
+    EditorPropertiesComponent,
+    EditorPropertiesComponent,
+    EditorSourceComponent,
+    EditorUiComponent,
+    HomeComponent,
+    DownloadComponent,
+
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
-    RouterModule,
-    DtIconModule.forRoot({ svgIconLocation: 'https://unpkg.com/@dynatrace/barista-icons/{{name}}.svg' }),
-    HomeModule,
-    EditorUiModule,
-    DownloadModule
-
+    BaristaWrapperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

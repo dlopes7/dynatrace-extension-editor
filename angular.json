@@ -144,5 +144,8 @@
       }
     }
   },
-  "defaultProject": "extensions-editor"
+  "defaultProject": "extensions-editor",
+  "cli": {
+    "analytics": "dab45820-0f5d-4185-8dbb-aa9e2bdd097b"
+  }
 }

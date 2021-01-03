@@ -19,7 +19,7 @@ export class DownloadComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let pluginJson = JSON.stringify(this.pluginWrapper.pluginJson, null, 2);
+    const pluginJson = JSON.stringify(this.pluginWrapper.pluginJson, null, 2);
 
     const blob = new Blob([pluginJson], { type: 'application/octet-stream' });
     this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
