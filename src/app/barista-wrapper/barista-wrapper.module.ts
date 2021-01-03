@@ -60,7 +60,7 @@ import {DtTreeTableModule} from '@dynatrace/barista-components/tree-table';
 @NgModule({
   declarations: [],
   imports: [
-    DtIconModule.forRoot({ svgIconLocation: '/assets/icons/{{name}}.svg' }),
+    DtIconModule.forRoot({ svgIconLocation: 'https://unpkg.com/@dynatrace/barista-icons/{{name}}.svg' }),
   ],
   exports: [
     DtAlertModule,
