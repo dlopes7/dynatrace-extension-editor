@@ -18,7 +18,10 @@ export class PluginJsonService {
   }
 
   changePluginJson(pluginWrapper: PluginWrapper) {
+    console.log('Received  pluginWrapper', pluginWrapper);
     this.pluginJsonSource.next(pluginWrapper);
+    console.log('New plugin.json', this.pluginJsonSource.getValue().pluginJson);
+    localStorage.setItem('pluginJson', JSON.stringify(pluginWrapper.pluginJson));
   }
 
 }
