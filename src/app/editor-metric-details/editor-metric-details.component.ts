@@ -19,22 +19,22 @@ export class EditorMetricDetailsComponent implements OnInit {
   metric: Metric;
   dialogState: string | null;
 
-  constructor(private route: ActivatedRoute, 
-    private pluginJsonService: PluginJsonService,
-     private cd: ChangeDetectorRef) { }
+  constructor(private route: ActivatedRoute,
+              private pluginJsonService: PluginJsonService,
+              private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(params => this.key = params["key"]);
+    this.route.params.subscribe(params => this.key = params.key);
     this.pluginJsonService.pluginJsonSource.subscribe(pluginWrapper => this.pluginWrapper = pluginWrapper);
-    
+
     // TODO - beter way to copy this?
     this.metric = JSON.parse(JSON.stringify(this.pluginWrapper.getMetric(this.key)));
   }
 
 
   onSave(): void {
-    
+
     this.pluginWrapper.addOrUpdateMetric(this.metric);
     this.pluginJsonService.changePluginJson(this.pluginWrapper);
 
@@ -50,13 +50,13 @@ export class EditorMetricDetailsComponent implements OnInit {
   }
 
   onChange(event) {
-      this.dialogState = "dirty";
+      this.dialogState = 'dirty';
   }
 
   removeDimension(dimensionName) {
 
     this.metric.dimensions = this.metric.dimensions.filter((dimension) => {
-      return dimension != dimensionName
+      return dimension !== dimensionName;
     });
     this.onChange(dimensionName);
   }
@@ -68,7 +68,7 @@ export class EditorMetricDetailsComponent implements OnInit {
 
   removeState(stateName) {
     this.metric.states = this.metric.states.filter((state) => {
-      return state != stateName;
+      return state !== stateName;
     });
     this.onChange(stateName);
   }
@@ -80,10 +80,10 @@ export class EditorMetricDetailsComponent implements OnInit {
 
   typeChange(event) {
     this.metric.type = event.value;
-    if (this.metric.type == "timeseries") {
+    if (this.metric.type === 'timeseries') {
       this.metric.states = null;
     }else {
-      this.metric.unit = "State";
+      this.metric.unit = 'State';
     }
     this.onChange(event);
   }

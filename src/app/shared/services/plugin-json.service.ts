@@ -1,8 +1,8 @@
 import { Injectable, OnInit} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import {pluginJson} from "./plugin_json";
-import { PluginWrapper } from '../../../app/models/plugin-wrapper';
+import {pluginJson} from './plugin_json';
+import { PluginWrapper } from '../../models/plugin-wrapper';
 
 @Injectable({
   providedIn: 'root'
